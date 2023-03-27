@@ -93,12 +93,17 @@
 }
 		]]></client_script>
         <controller_as>c</controller_as>
-        <css>.navbar {
+        <css>.navbar-inverse {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
+}
+
+.navbar {
   transition: 250ms opacity ease-in-out;
   -webkit-transition: 250ms opacity ease-in-out;
   border: 0;
   border-bottom: 4px solid $sp-navbar-divider-color;
-  padding: 0 10vw;
+  padding: 0 8vw;
+  
 }
 
 .navbar-fade {
@@ -362,14 +367,14 @@ data.loginWidget = $sp.getWidgetFromInstance('login-modal');]]></script>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-23 03:21:47</sys_created_on>
         <sys_id>7f37e1389735255051637d271153af6d</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>HS Header</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_header_footer_7f37e1389735255051637d271153af6d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-24 03:53:36</sys_updated_on>
+        <sys_updated_on>2023-03-27 03:13:45</sys_updated_on>
         <template><![CDATA[<div>
   <nav class="navbar-inverse" ng-class="::{'navbar':!isViewNative, 'is-native': isViewNative}"
        role="navigation" aria-label="${Primary}">

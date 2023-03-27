@@ -6,24 +6,39 @@
 }]]></client_script>
         <controller_as>c</controller_as>
         <css>.iconlink {
-	padding: 3px 0;
+  margin: 8px 0;
+  box-shadow: $shadow-primary;
+  //box-shadow: #807eb9 0px 1px 2px 0px, #b3b0d5 0px 2px 6px 2px;
+  //box-shadow: #cccae3 0px 3px 6px, #6667ab 0px 3px 6px;
+  height: 10vw;
+
+  a:focus, a:hover {
+    box-shadow: $shadow-focus-primary;
+    border: $bordr-focus-primary;
+  }
+  a label,h2 {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    padding: 0;
+    margin: 0 0 10px 0;
+  }
 }
 
-.iconlink a label,h2 {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: 300;
-  line-height: 1.1;
-  padding: 0;
-  margin: 0 0 10px 0;
-}
+
+
 
 /* TOP ICON ---------- */
 
+a {
+  height: 100%;
+}
 a.top_icon {
   display: block;
   padding: 20px;
   text-align: center;
+
 }
 
 a.top_icon .fa {
@@ -45,6 +60,13 @@ a.circle_icon .fa {
   top: 10px;
 }
 
+a.text-primary {
+
+  background-color: white;
+  h2 {
+    color: #6667ab;
+  }
+}
 /* COLOR BOX ---------- */
 
 a.color_box {
@@ -58,7 +80,7 @@ a.color_box {
 
   //display: block;
   //position: relative;
-  
+
   //border-radius: 4px;
   //margin-bottom: 20px;
 }
@@ -67,7 +89,7 @@ a.color_box .fa {
   //position:absolute;
   //left: 50%;
   //top: 20px;
-font-size: 50px;
+  font-size: 50px;
 }
 
 .icon-link-background-primary {
@@ -96,7 +118,7 @@ font-size: 50px;
 
 .text-primary {
   color: $brand-primary;
-  
+
   &amp;:hover {
     color: darken($brand-primary, 20%);
   }
@@ -104,7 +126,7 @@ font-size: 50px;
 
 .text-info {
   color: $brand-info;
-  
+
   &amp;:hover {
     color: darken($brand-info, 20%);
   }
@@ -112,7 +134,7 @@ font-size: 50px;
 
 .text-success {
   color: $brand-success;
-  
+
   &amp;:hover {
     color: darken($brand-success, 20%);
   }
@@ -120,7 +142,7 @@ font-size: 50px;
 
 .text-warning {
   color: $brand-warning;
-  
+
   &amp;:hover {
     color: darken($brand-warning, 20%);
   }
@@ -128,7 +150,7 @@ font-size: 50px;
 
 .text-danger {
   color: $brand-danger;
-  
+
   &amp;:hover {
     color: darken($brand-danger, 20%);
   }
@@ -136,7 +158,7 @@ font-size: 50px;
 
 .text-default {
   color: $brand-primary;
-  
+
   &amp;:hover {
     color: darken($brand-primary, 20%);
   }
@@ -190,14 +212,14 @@ font-size: 50px;
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-23 07:16:27</sys_created_on>
         <sys_id>d1fc1ef897f5255051637d271153af5d</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>60</sys_mod_count>
         <sys_name>HS Icon Link</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_d1fc1ef897f5255051637d271153af5d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-24 03:53:36</sys_updated_on>
+        <sys_updated_on>2023-03-27 04:02:28</sys_updated_on>
         <template><![CDATA[<div class="iconlink" ng-class="{'high-contrast': accessibilityModeEnabled}">
   <!--// Top Icon -->
   <a ng-if="::(options.link_template == 'Top Icon' || !options.link_template)" ng-href="{{::data.href}}" class="top_icon {{::options.class_name}}" target="{{::data.target}}">

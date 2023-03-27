@@ -482,9 +482,9 @@ input[name="q"]::placeholder {
 }
 
 button[name="search"]:focus {
-  box-shadow: 0rem 0rem .5rem #0072ae !important;
-  border: .1rem solid #0072ae !important;
-  background-color: #0072ae;
+  box-shadow: $shadow-focus-primary !important;
+  border: $border-focus-primary !important;
+  background-color: #6667AB;
   i {
   color: #ffffff;
 }
@@ -494,17 +494,17 @@ button[name="search"] {
   border: none;
 }
 i {
-  color: #0072ae;
+  color: #6667AB;
 }
 
 form {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: #cccae3 0px 10px 15px -3px, #cccae3 0px 4px 6px -2px;
   .form-control{
     border: none;
   }
   .form-control:focus {
-    border: .1rem solid #0072ae;
-    box-shadow: 0rem 0rem .5rem #0072ae;
+    border: $border-focus-primary;
+    box-shadow: $shadow-focus-primary;
     border-radius: 0;
   }
 }</css>
@@ -653,14 +653,14 @@ form {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-23 04:14:58</sys_created_on>
         <sys_id>4b63fdf09775255051637d271153af3d</sys_id>
-        <sys_mod_count>28</sys_mod_count>
+        <sys_mod_count>38</sys_mod_count>
         <sys_name>HS Typeahead Search</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_4b63fdf09775255051637d271153af3d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-24 03:53:36</sys_updated_on>
+        <sys_updated_on>2023-03-27 03:45:09</sys_updated_on>
         <template><![CDATA[<form  ng-if="!c.data.aisEnabled" ng-submit="c.submitSearch()" role="search">
   <input type="hidden" name="id" value="search"/>
   <input type="hidden" name="t" value="{{c.searchType}}"/>

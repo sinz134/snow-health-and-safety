@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <client_script><![CDATA[api.controller=function() {
+	/* widget controller */
+	var c = this;
+	c.data.greeting = 'Hello, ' + scope.user.first_name; 
+};]]></client_script>
         <controller_as>c</controller_as>
-        <css>.sp-tagline-color {
-	color: $sp-tagline-color;
+        <css>h1 {
+	color: #6667AB;
 }
 
+h3 {
+  margin-bottom: 50px;
+  color: #9a97c7;
+}
 #homepage-search {
   .aisearch {
     --classicsponlydonotuse--rem-multipy: 1.6;
@@ -38,17 +46,18 @@ else
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-23 04:04:53</sys_created_on>
         <sys_id>df11f1b09775255051637d271153af04</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>20</sys_mod_count>
         <sys_name>Home Search</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_df11f1b09775255051637d271153af04</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-24 03:53:36</sys_updated_on>
+        <sys_updated_on>2023-03-24 06:44:41</sys_updated_on>
         <template><![CDATA[<div id="homepage-search" class="hidden-xs wrapper-xl">
   <div class="wrapper-xl">
-  	<h2 class="text-center text-4x m-b-lg sp-tagline-color" ng-bind="options.title"></h2>
+    <h1 class="text-4x m-b-lg sp-tagline-color" ng-bind="data.greeting"></h1>
+  	<h3 class="sp-tagline-color" ng-bind="options.title"></h3>
   	<div ng-if="options.short_description" class="text-center h4 m-b-lg sp-tagline-color" ng-bind="options.short_description"></div>
   	<sp-widget widget="data.typeAheadSearch"></sp-widget>
   </div>

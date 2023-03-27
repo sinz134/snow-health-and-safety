@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.transclude:last-child {
+  padding-bottom: 10px;
+}
+
+.list-group {
+ 	margin-bottom: 0px; 
+}
+
+.list-group-item {
+    padding: 0;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 0px;
+}
+
+.list-group-item:last-child {
+	margin-bottom: 0px;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .panel-body .list-group .list-group-item .glyphicon-star {
+    color: windowText !important;
+  }
+}
+
+.kb-star-on {
+  color: $fav-star-color !important;
+  text-shadow: $fav-star-outline;
+}
+
+.kb-star-off {
+  color: $fav-star-color-off !important;
+  text-shadow: $fav-star-outline;
+}
+
+.panel {
+  margin: 8px 0;
+  height: 10vw;
+  border-radius: 0;
+  box-shadow: $shadow-primary;
+  //box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background-color: white;
+  .panel-heading {
+    background-color: white;
+  }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list>title,color,glyph</field_list>
+        <has_preview>true</has_preview>
+        <id>hs_top_rated</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>HS Top Rated</name>
+        <option_schema>[{"name":"max_number","section":"Presentation","label":"Max number","type":"integer"},{"displayValue":"Knowledge Category","name":"kb_category","section":"Data","label":"KB category","type":"reference","value":"kb_category","ed":{"reference":"kb_category"}}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.articles = [];
+	options.title = options.title || gs.getMessage("Top Rated Articles");
+	
+	var z;
+	var knowledge_bases;
+	var sys_id = $sp.getParameter('sys_id');
+	var kb_id = $sp.getParameter('kb_id');
+	var gr = new GlideRecord("kb_knowledge");
+	data.sysId = sys_id;
+	
+	var foundArticle = false;
+	if (sys_id) { // sys_id specified, try to find an article by sys_id or number
+		gr.addQuery("sys_id", sys_id).addOrCondition("number", sys_id);
+		gr.query();
+		if (gr.next() && gr.canRead()) {
+			// When sys_id matches a kb_record, get KB of the article
+			knowledge_bases = String(gr.getValue('kb_knowledge_base'));
+			foundArticle = true;
+		}
+	}
+	
+	if (!foundArticle) { /* For all other pages this code will get executed. Used on knowledge home page.*/
+		/*If KB is selected display top rated articles only from that KB*/
+		if (kb_id != null)
+			knowledge_bases = String(kb_id);
+		else {
+			/*Get all knowledge bases associated with Portal*/
+			knowledge_bases = String($sp.getKnowledgeBases());
+		}
+	}
+	
+	if (GlideStringUtil.notNil(knowledge_bases))
+		z = $sp.getAllKBRecords(knowledge_bases);
+	else //If there are no accessible KBs for logged in user
+		return;
+	
+	z.addQuery("rating", ">", "0");
+	if (options.kb_category)
+		z.addQuery("kb_category", options.kb_category);
+	z.orderByDesc('rating');
+	z.setLimit(options.max_number || 5);
+	z.query();
+	while (z.next()) {
+		if (!z.canRead())
+			continue;
+
+		var a = {};
+		$sp.getRecordValues(a, z, 'short_description,sys_view_count,sys_id,published,rating');
+		a.published_display = z.getDisplayValue("published");
+		a.rating = Math.round(a.rating);
+		a.ratingAriaLabel = gs.getMessage('Article, {0}, {1} star rating', [z.short_description, z.rating]);
+		data.articles.push(a);
+	}
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-24 10:13:53</sys_created_on>
+        <sys_id>0a2f8415977d655051637d271153af8d</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>HS Top Rated</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
+        <sys_update_name>sp_widget_0a2f8415977d655051637d271153af8d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-27 09:33:03</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-{{options.color}} b" ng-if="::(data.articles.length > 0)">
+  <div class="panel-heading"> <h2 class="h4 panel-title" id="header-{{data.sysId}}">
+    <fa ng-if="::options.glyph.length" name="{{::options.glyph}}" class="m-r-sm" ></fa> {{::options.title}}</h2>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group" aria-labelledby="header-{{data.sysId}}">
+      <li class="list-group-item" ng-repeat="a in ::data.articles">
+        <a href="?id=kb_article&sys_id={{::a.sys_id}}" aria-label="{{::a.ratingAriaLabel}}">{{::a.short_description}}</a>
+        <div>
+          <span uib-rating sp-rating ng-model="::a.rating" max="5" readonly="true" aria-hidden="true" state-on="'fa fa-star kb-star-on'" state-off="'fa fa-star kb-star-off'"></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope>
+        <claim_timestamp>1872269fb920000001</claim_timestamp>
+        <metadata_update_name>sp_widget_0a2f8415977d655051637d271153af8d</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>Healthcare</previous_claim_name>
+        <previous_claim_scope>8b74bac997f5655051637d271153afe9</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-27 09:33:03</sys_created_on>
+        <sys_id>dd92a3429775695051637d271153afec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-27 09:33:03</sys_updated_on>
+    </sys_claim>
+</record_update>

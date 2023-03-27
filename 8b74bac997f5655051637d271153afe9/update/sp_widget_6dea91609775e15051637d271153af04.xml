@@ -105,10 +105,10 @@
 }]]></client_script>
         <controller_as>c</controller_as>
         <css>.header-loader {
-	float: left;
-  	width: 24px;
-  	position: relative;
-  	top: 24px;
+  float: left;
+  width: 24px;
+  position: relative;
+  top: 24px;
 }
 
 .cart-dropdown, .wishlist-menu, .gtd-dropdown-container .empty-dropdown {
@@ -163,7 +163,7 @@
     padding: 0;
   }
   .btn-clear {
-		color: #333;
+    color: #333;
     background-color: #fff;
   }
   p.quantity-price {
@@ -174,11 +174,12 @@
     }
   }
   .align-right {
-  	text-align: right;
+    text-align: right;
   }
 }
 
-.fa-shopping-cart {
+
+li {
   font-size: 20px;
 }
 
@@ -188,7 +189,7 @@
 }
 
 .open &gt; .dropdown-menu {
-	padding: 0.5rem 0.2rem !important;
+  padding: 0.5rem 0.2rem !important;
 }
 
 .gtd-dropdown-container {
@@ -216,15 +217,15 @@
 }
 
 @media  (max-width: 845px) and (min-width: 768px)  {
-	.header-menu-item ul {
-		right: auto;
-		left: auto;
-	}
+  .header-menu-item ul {
+    right: auto;
+    left: auto;
+  }
 }
 @media (max-width: 767px) {
-	.empty-dropdown {
-		width: auto !important;
-	}
+  .empty-dropdown {
+    width: auto !important;
+  }
 }
 </css>
         <data_table>sp_instance_menu</data_table>
@@ -306,14 +307,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-22 07:49:22</sys_created_on>
         <sys_id>6dea91609775e15051637d271153af04</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>HS Menu</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_6dea91609775e15051637d271153af04</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-24 03:53:36</sys_updated_on>
+        <sys_updated_on>2023-03-24 04:17:51</sys_updated_on>
         <template><![CDATA[<ul class="nav navbar-nav" aria-label="${Header}" role="menubar">
   <div class="header-loader" ng-class="{'invisible': !loadingIndicator}">
     <div class="hidden-xs hidden-sm sp-loading-indicator la-sm">
