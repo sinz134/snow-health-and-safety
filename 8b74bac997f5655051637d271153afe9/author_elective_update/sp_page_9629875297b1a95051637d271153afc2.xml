@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="DELETE">
+        <category>other</category>
+        <css>section.page {
+	background-color: $sp-homepage-bg;
+  font-family: 'Montserrat', sans-serif;
+}
+section.page, main.body {
+    padding-top: 0px !important;
+}
+</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>hs_home</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-28 02:20:28</sys_created_on>
+        <sys_id>9629875297b1a95051637d271153afc2</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>hs_home</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
+        <sys_update_name>sp_page_9629875297b1a95051637d271153afc2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-28 02:20:44</sys_updated_on>
+        <title>HS Home</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="DELETE" query="documentkey=9629875297b1a95051637d271153afc2"/>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope>
+        <claim_timestamp>187260489ce0000001</claim_timestamp>
+        <metadata_update_name>sp_page_9629875297b1a95051637d271153afc2</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>Healthcare</previous_claim_name>
+        <previous_claim_scope>8b74bac997f5655051637d271153afe9</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-28 02:20:44</sys_created_on>
+        <sys_id>1e39cf1297b1a95051637d271153af5b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-28 02:20:44</sys_updated_on>
+    </sys_claim>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Healthcare">8b74bac997f5655051637d271153afe9</application>
+        <file_path/>
+        <instance_id>01d36297dbd92dd437a0c5970596199f</instance_id>
+        <instance_name>dev159030</instance_name>
+        <name>sp_page_9629875297b1a95051637d271153afc2</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page"><sp_page action="INSERT_OR_UPDATE"><category>other</category><css>section.page {
+	background-color: $sp-homepage-bg;
+  font-family: 'Montserrat', sans-serif;
+}
+section.page, main.body {
+    padding-top: 0px !important;
+}
+</css><draft>false</draft><dynamic_title_structure/><id>hs_home</id><internal>false</internal><omit_watcher>false</omit_watcher><public>false</public><roles/><seo_script/><short_description/><sys_class_name>sp_page</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-03-28 02:20:28</sys_created_on><sys_id>9629875297b1a95051637d271153afc2</sys_id><sys_mod_count>1</sys_mod_count><sys_name>hs_home</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope><sys_update_name>sp_page_9629875297b1a95051637d271153afc2</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-03-28 02:20:44</sys_updated_on><title>HS Home</title><use_seo_script>false</use_seo_script></sp_page><sys_translated_text action="delete_multiple" query="documentkey=9629875297b1a95051637d271153afc2"/><sys_claim action="INSERT_OR_UPDATE"><claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope><claim_timestamp>187260489ce0000001</claim_timestamp><metadata_update_name>sp_page_9629875297b1a95051637d271153afc2</metadata_update_name><previous_claim_app_version>1.0.0</previous_claim_app_version><previous_claim_name>Healthcare</previous_claim_name><previous_claim_scope>8b74bac997f5655051637d271153afe9</previous_claim_scope><sys_created_by>admin</sys_created_by><sys_created_on>2023-03-28 02:20:44</sys_created_on><sys_id>1e39cf1297b1a95051637d271153af5b</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-03-28 02:20:44</sys_updated_on></sys_claim></record_update>]]></payload>
+        <payload_hash>1708444875</payload_hash>
+        <record_name>hs_home</record_name>
+        <reverted_from/>
+        <source>f5c4f20d97f5655051637d271153af90</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-28 02:20:44</sys_created_on>
+        <sys_id>9239cf1297b1a95051637d271153af5f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18726048b270000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-28 02:20:44</sys_updated_on>
+        <type>Page</type>
+        <update_guid>9a39cf128cb1a950bdd4a68bddb7915e</update_guid>
+        <update_guid_history>9a39cf128cb1a950bdd4a68bddb7915e:1708444875,1e294f92cdb1a9502d762525a06229cb:-2013679235</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="hs_home">53c90bd297b1a95051637d271153af57</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-28 02:23:16</sys_created_on>
+        <sys_db_object display_value="" name="sp_page">sp_page</sys_db_object>
+        <sys_id>09684c6d6af54f5080e8f6dd1a4e7c04</sys_id>
+        <sys_metadata>9629875297b1a95051637d271153afc2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>hs_home</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
+        <sys_scope_delete display_value="">b50ef0582caa49f0bda252fb0ebf4c40</sys_scope_delete>
+        <sys_update_name>sp_page_9629875297b1a95051637d271153afc2</sys_update_name>
+        <sys_update_version display_value="sp_page_9629875297b1a95051637d271153afc2">9239cf1297b1a95051637d271153af5f</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-28 02:23:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
