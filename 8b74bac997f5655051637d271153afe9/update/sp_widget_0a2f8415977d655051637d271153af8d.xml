@@ -41,7 +41,7 @@
 .panel {
   margin: 8px 0;
   height: 10vw;
-  border-radius: 0;
+  border-radius: 4px;
   box-shadow: $shadow-primary;
   //box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-color: white;
@@ -123,14 +123,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-24 10:13:53</sys_created_on>
         <sys_id>0a2f8415977d655051637d271153af8d</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>HS Top Rated</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_0a2f8415977d655051637d271153af8d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-27 09:33:03</sys_updated_on>
+        <sys_updated_on>2023-03-28 04:49:31</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{options.color}} b" ng-if="::(data.articles.length > 0)">
   <div class="panel-heading"> <h2 class="h4 panel-title" id="header-{{data.sysId}}">
     <fa ng-if="::options.glyph.length" name="{{::options.glyph}}" class="m-r-sm" ></fa> {{::options.title}}</h2>
