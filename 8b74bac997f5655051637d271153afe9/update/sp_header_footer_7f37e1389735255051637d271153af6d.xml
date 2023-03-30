@@ -103,9 +103,14 @@
   border: 0;
   border-bottom: 4px solid $sp-navbar-divider-color;
   padding: 0 8vw;
-  
+
 }
 
+.avatar-small-medium{
+  width: 50px;
+  height: 50px;
+  margin-top: -8px;
+}
 .navbar-fade {
   opacity: 0.4;
 }
@@ -157,7 +162,7 @@ header[role="banner"],
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   overflow: hidden;
-  
+
 }
 
 @media screen and (max-width: 992px){
@@ -179,7 +184,7 @@ nav {
   margin-bottom: 0px;
   border-radius: 0px;
 
- .toggle-dropdown {
+  .toggle-dropdown {
     height: 60px;
   }
 
@@ -191,7 +196,7 @@ nav {
 }
 
 .navbar-nav {
-margin: 0px;
+  margin: 0px;
 }
 
 // PRB711244: Dropdown menu is scrollable when too many items
@@ -202,11 +207,11 @@ margin: 0px;
 }
 
 .is-native {
- .scrollable-dropdown {
-  max-height: 100vh;
-  overflow: scroll;
-  height: auto;
-	}
+  .scrollable-dropdown {
+    max-height: 100vh;
+    overflow: scroll;
+    height: auto;
+  }
 }
 
 
@@ -375,14 +380,14 @@ data.loginWidget = $sp.getWidgetFromInstance('login-modal');]]></script>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-23 03:21:47</sys_created_on>
         <sys_id>7f37e1389735255051637d271153af6d</sys_id>
-        <sys_mod_count>30</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>HS Header</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_header_footer_7f37e1389735255051637d271153af6d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-27 10:10:22</sys_updated_on>
+        <sys_updated_on>2023-03-29 06:47:15</sys_updated_on>
         <template><![CDATA[<div>
   <nav class="navbar-inverse" ng-class="::{'navbar':!isViewNative, 'is-native': isViewNative}"
        role="navigation" aria-label="${Primary}">
