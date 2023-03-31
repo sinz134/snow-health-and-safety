@@ -388,14 +388,14 @@ data.loginWidget = $sp.getWidgetFromInstance('login-modal');]]></script>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-23 03:21:47</sys_created_on>
         <sys_id>7f37e1389735255051637d271153af6d</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>38</sys_mod_count>
         <sys_name>HS Header</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_header_footer_7f37e1389735255051637d271153af6d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-30 07:46:49</sys_updated_on>
+        <sys_updated_on>2023-03-31 04:03:07</sys_updated_on>
         <template><![CDATA[<div>
   <nav class="navbar-inverse" ng-class="::{'navbar':!isViewNative, 'is-native': isViewNative}"
        role="navigation" aria-label="${Primary}">
@@ -429,7 +429,7 @@ data.loginWidget = $sp.getWidgetFromInstance('login-modal');]]></script>
             <!-- <span class="visible-lg-inline">{{::user.name}}</span> -->
           </a>
           <ul class="dropdown-menu" role="menu" aria-label="{{::data.profileBtnMsg}}">
-            <li role="presentation"><a tabindex="-1" ng-href="?id=user_profile&sys_id={{::user.sys_id}}" role="menuitem">${Profile}</a></li>
+            <li role="presentation"><a tabindex="-1" ng-href="?id=hs_user_profile&sys_id={{::user.sys_id}}" role="menuitem">${Profile}</a></li>
             <li ng-if="::!(isViewNative || isViewNativeTablet)" role="presentation"><a tabindex="-1" href="{{::portal.logoutUrl}}" role="menuitem">${Logout}</a></li>
           </ul>
         </li>
