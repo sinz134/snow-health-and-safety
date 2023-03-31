@@ -95,6 +95,11 @@
         <controller_as>c</controller_as>
         <css>.navbar-inverse {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
+  
+  a:focus {
+    box-shadow: none;
+    border: none;
+  }
 }
 
 .navbar {
@@ -106,6 +111,9 @@
 
 }
 
+.navbar-avatar {
+  margin-right: 0;
+}
 .avatar-small-medium{
   width: 50px;
   height: 50px;
@@ -380,14 +388,14 @@ data.loginWidget = $sp.getWidgetFromInstance('login-modal');]]></script>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-23 03:21:47</sys_created_on>
         <sys_id>7f37e1389735255051637d271153af6d</sys_id>
-        <sys_mod_count>33</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>HS Header</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_header_footer_7f37e1389735255051637d271153af6d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-29 06:47:15</sys_updated_on>
+        <sys_updated_on>2023-03-30 07:46:49</sys_updated_on>
         <template><![CDATA[<div>
   <nav class="navbar-inverse" ng-class="::{'navbar':!isViewNative, 'is-native': isViewNative}"
        role="navigation" aria-label="${Primary}">

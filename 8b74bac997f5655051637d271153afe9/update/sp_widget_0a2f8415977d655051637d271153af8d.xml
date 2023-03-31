@@ -8,18 +8,18 @@
 }
 
 .list-group {
- 	margin-bottom: 0px; 
+  margin-bottom: 0px; 
 }
 
 .list-group-item {
-    padding: 0;
-    border: none;
-    margin-bottom: 10px;
-    border-radius: 0px;
+  padding: 0;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 0px;
 }
 
 .list-group-item:last-child {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 @media screen and (-ms-high-contrast: active) {
@@ -29,8 +29,7 @@
 }
 
 .kb-star-on {
-  color: $fav-star-color !important;
-  text-shadow: $fav-star-outline;
+  color: #FDCC0D !important;
 }
 
 .kb-star-off {
@@ -47,6 +46,23 @@
   background-color: white;
   .panel-heading {
     background-color: white;
+    border: none;
+    .panel-title {
+      border-bottom: 1px solid #e5e4f1; 
+      font-size: 18px;
+      line-height: 0.1em;
+      margin: 20px 0 20px; 
+      color: #6667ab;   
+      width: 100%; 
+      span {
+        padding:0 20px 0 0;
+        background-color: #fff;
+      }
+    }
+  }
+  
+  .panel-body {
+    padding-top: 8px;
   }
 }</css>
         <data_table>sp_instance</data_table>
@@ -123,17 +139,17 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-24 10:13:53</sys_created_on>
         <sys_id>0a2f8415977d655051637d271153af8d</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>HS Top Rated</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_0a2f8415977d655051637d271153af8d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-28 04:49:31</sys_updated_on>
+        <sys_updated_on>2023-03-30 04:28:00</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{options.color}} b" ng-if="::(data.articles.length > 0)">
   <div class="panel-heading"> <h2 class="h4 panel-title" id="header-{{data.sysId}}">
-    <fa ng-if="::options.glyph.length" name="{{::options.glyph}}" class="m-r-sm" ></fa> {{::options.title}}</h2>
+    <fa ng-if="::options.glyph.length" name="{{::options.glyph}}" class="m-r-sm" ></fa><span> {{::options.title}} </span></h2>
   </div>
   <div class="panel-body">
     <ul class="list-group" aria-labelledby="header-{{data.sysId}}">

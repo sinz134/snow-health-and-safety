@@ -5,7 +5,7 @@
         <controller_as>c</controller_as>
         <css>.news-container {
   width: 100%;
-
+	position: relative;
 }
 
 .news-title {
@@ -16,7 +16,7 @@
 }
 hr {
   border-color: #afafaf;
-	margin: 10px 0;
+  margin: 10px 0;
 }
 a:hover {
   cursor: pointer;
@@ -25,7 +25,7 @@ a:hover {
     background-color: #6667ab;
     color: #fff;
     border-radius: 4px;
-    
+
     h3 {
       margin-left: 20px;
     }
@@ -42,6 +42,11 @@ a:hover {
   color: #55558c;
   h3{
     margin: 20px 80px 20px 0;
+    text-transform: lowercase;
+    &amp;:first-letter {
+      text-transform: uppercase;
+    }
+
   }
 
   i {
@@ -95,14 +100,14 @@ a:hover {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-29 08:03:47</sys_created_on>
         <sys_id>d15161fa97f52d5051637d271153af9f</sys_id>
-        <sys_mod_count>51</sys_mod_count>
+        <sys_mod_count>55</sys_mod_count>
         <sys_name>HS News</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_d15161fa97f52d5051637d271153af9f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-29 09:56:47</sys_updated_on>
+        <sys_updated_on>2023-03-30 04:35:53</sys_updated_on>
         <template><![CDATA[<div class="news-container">
   <h3 class="news-title">
     Popular news

@@ -69,14 +69,49 @@
   border-radius: 4px;
   margin-bottom: 0;
   margin-top: 9px;
+  a:focus {
+    box-shadow: none;
+  }
 }
 
+.panel-title {
+  border-bottom: 1px solid #e5e4f1; 
+  font-size: 18px;
+  line-height: 0.1em;
+  margin: 20px 0 20px; 
+  color: #6667ab;   
+  width: 100%; 
+  span {
+    padding:0 20px 0 0;
+    background-color: #fff;
+  }
+}
 .panel-heading  {
-  padding: 13px 15px !important;
+  background-color: #fff;
+  padding: 12px 15px 8px 15px;
+  border: none;
 }
 
 .disabled-filter {
   color: #A0A0A0;
+}
+
+.list-group {
+  padding: 0 15px;
+  background-color: #fff;
+}
+
+.list-group-item {
+  padding: 15px 0;
+  //border-bottom: 1px solid #9a97c7;
+
+  &amp;:hover {
+    background-color: #6667ab;
+    padding-left: 15px;
+    a {
+      color: #fff;
+    }
+  }
 }
 
 .list-group-item.ng-enter {
@@ -114,15 +149,19 @@ IMG.img-sm {
 }
 
 .panel-footer {
-
+  position: relative;
+  width: 100%;
   margin-top: 0;
   margin-bottom: 0;
-
+  background-color: #fff;
   display: inline-block;
 
   a {
     font-size: 16px;
     color: #6667AB !important;
+    &amp;:hover {
+      font-weight: bold;
+    }
   }
 }
 
@@ -282,20 +321,21 @@ IMG.img-sm {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-27 02:40:27</sys_created_on>
         <sys_id>51248a4697fd295051637d271153af9e</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>58</sys_mod_count>
         <sys_name>HS Simple List</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_51248a4697fd295051637d271153af9e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-28 04:49:09</sys_updated_on>
+        <sys_updated_on>2023-03-31 02:20:30</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{::c.options.color}} b" ng-if="c.data.isValid && (c.options.always_show == 'true' || c.options.always_show == true || c.data.filterText || c.data.list.length)">
   <div class="panel-heading" ng-if="::!c.options.hide_header">
     <h3 class="h4 panel-title">
       <span ng-if="c.options.glyph">
         <fa name="{{::c.options.glyph}}"></fa>
-      </span>{{::c.options.title}}</h3>
+      </span>
+      <span>{{::c.options.title}}</span></h3>
     <!-- <i class="fa fa-filter" ng-click="c.toggleFilter()" ng-class="{'disabled-filter': !c.showFilter}"></i> -->
     <div ng-show="c.showFilter">
       <input aria-label="${Filter}" ng-model="c.data.filterText" ng-model-options="{debounce: 300}" sn-focus="c.showFilter" placeholder="{{::data.filterMsg}}" ng-change="c.update()" class="form-control input-sm filter-box">
