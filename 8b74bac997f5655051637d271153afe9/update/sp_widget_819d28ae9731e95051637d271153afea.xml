@@ -17,12 +17,12 @@
       if (i + 1 == slides.length) {
         addActive(slides[0]);
         slides[0].style.zIndex = 100;
-        setTimeout(removeActive, 350, slides[i]); //Doesn't be worked in IE-9
+        setTimeout(removeActive, 500, slides[i]); //Doesn't be worked in IE-9
         break;
       }
       if (slides[i].classList.contains('active')) { 
         slides[i].removeAttribute('style');
-        setTimeout(removeActive, 350, slides[i]); //Doesn't be worked in IE-9
+        setTimeout(removeActive, 500, slides[i]); //Doesn't be worked in IE-9
         addActive(slides[i + 1]);
         break;
       }
@@ -114,14 +114,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-28 09:39:12</sys_created_on>
         <sys_id>819d28ae9731e95051637d271153afea</sys_id>
-        <sys_mod_count>82</sys_mod_count>
+        <sys_mod_count>83</sys_mod_count>
         <sys_name>HS Image Link</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_819d28ae9731e95051637d271153afea</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-30 04:09:49</sys_updated_on>
+        <sys_updated_on>2023-03-31 06:42:51</sys_updated_on>
         <template><![CDATA[<!--
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-20 imagelink">
 
