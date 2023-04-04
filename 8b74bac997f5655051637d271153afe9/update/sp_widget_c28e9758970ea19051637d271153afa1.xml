@@ -233,7 +233,10 @@
 	/*=============== End link handling ===============*/
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>.toggle {
+        <css>
+
+
+.toggle {
   color: $gray-darker;
   i:not(.active):hover {
 	  color: $list-group-link-heading-color;
@@ -310,7 +313,12 @@
 }
 
 .catalog-item-name {
-  text-decoration: underline;
+  
+}
+
+
+.title {
+  margin-bottom: 10px;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -532,23 +540,23 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-04-03 09:01:41</sys_created_on>
         <sys_id>c28e9758970ea19051637d271153afa1</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>HS Safe Site</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_c28e9758970ea19051637d271153afa1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-04-03 09:10:19</sys_updated_on>
+        <sys_updated_on>2023-04-03 09:30:36</sys_updated_on>
         <template><![CDATA[<div id="sc_category_page"  class="m-t-sm " ng-class="{'hidden-xs' : hideItemWidget, 'm-l-sm': !isMobile}">
   <h4 ng-if="data.error">{{data.error}}</h4>
   <div ng-init="spSearch.targetCatalog()">
-    <div class="row">
+    <div class="row title">
       <div class="col-xs-9">
         	<button ng-click="showCategories()" class="visible-xs m-b-sm pointer btn-link" tabindex="0" id="all-categories-link">
             <i class="fa fa-chevron-left m-r-xs"></i> ${All Categories}
         	</button>
-          <h2 class="h4 m-t-none break-word" aria-label="{{data.categoryPageAriaLabel}}">{{data.category.title}}</h2>
+          <h2 class="h4 m-t-none break-word" aria-label="{{data.categoryPageAriaLabel}}">Request Suggestion</h2>
         	<p class="hidden-xs break-word">
             {{data.category.description}}
           </p>
