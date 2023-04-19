@@ -558,17 +558,17 @@ $sp-panel-box-shadow : 0 4px 8px 0 rgba(23,40,52,0.08) !default;
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-03-28 03:44:09</sys_created_on>
         <sys_id>805c53529735a95051637d271153af6b</sys_id>
-        <sys_mod_count>60</sys_mod_count>
+        <sys_mod_count>62</sys_mod_count>
         <sys_name>HS My items</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_widget_805c53529735a95051637d271153af6b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-03-30 04:31:56</sys_updated_on>
+        <sys_updated_on>2023-04-18 19:51:15</sys_updated_on>
         <template><![CDATA[<div ng-if="isLoading" class="my-items-container">
   <div class="widget-header">
-    <h3 class="title"><span>{{::data.title}} </span></h3> </div>
+    <h3 class="title"><span>My Active Items </span></h3> </div>
   <div class="my-items-body" ng-class="c.primaryActivity ? '' : 'no-primary-activity'">
     <div class="activity-check" ng-if="c.checkForData()">
       <p class="no-items"> There's nothing to check in on right now </p>
@@ -593,7 +593,7 @@ $sp-panel-box-shadow : 0 4px 8px 0 rgba(23,40,52,0.08) !default;
         </div>
       </div>
     </div>
-    <div class="list-view" ng-if="c.listViewData.length > 0">
+    <!-- <div class="list-view" ng-if="c.listViewData.length > 0">
       <div class="header">
         <h3 class="list-header">{{::data.list_title}}</h3> 
         <a class="view-all" ng-if="c.showViewAll" ng-href="{{c.primaryActivity.itemUrl}}" target="{{c.primaryActivity.target}}">${View all}
@@ -620,7 +620,7 @@ $sp-panel-box-shadow : 0 4px 8px 0 rgba(23,40,52,0.08) !default;
         </a>
       </div>
     </div>
-  </div>]]></template>
+  </div> -->]]></template>
     </sp_widget>
     <sys_claim action="INSERT_OR_UPDATE">
         <claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope>
