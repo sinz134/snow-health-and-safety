@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>other</category>
+        <css>section.page {
+	background-color: $sp-homepage-bg;
+  
+}
+section.page, main.body {
+    padding-top: 0px !important;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif !important;
+  scrollbar-color: #9a97c7 #fff;
+}
+
+.map-section {
+  height: 600px;
+}</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>hs_home</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-28 02:23:40</sys_created_on>
+        <sys_id>51e94f9297b1a95051637d271153aff4</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>hs_home</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
+        <sys_update_name>sp_page_51e94f9297b1a95051637d271153aff4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-31 09:45:24</sys_updated_on>
+        <title>HS Home</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=51e94f9297b1a95051637d271153aff4"/>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope>
+        <claim_timestamp>18726122d9a0000001</claim_timestamp>
+        <metadata_update_name>sp_page_51e94f9297b1a95051637d271153aff4</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>Healthcare</previous_claim_name>
+        <previous_claim_scope>8b74bac997f5655051637d271153afe9</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-28 02:35:38</sys_created_on>
+        <sys_id>28ac4f5697b1a95051637d271153af2f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-28 02:35:38</sys_updated_on>
+    </sys_claim>
+</record_update>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+	/* widget controller */
+	var c = this;
+
+	function update() {
+		if( c.options.timezone == 'America/Los_Angeles')
+			{
+				$('.la').html(moment().tz(c.options.timezone).format('HH:mm:ss'));
+				$('.lad').html(moment().tz(c.options.timezone).format('ddd MMM DD YYYY'));
+			}
+		else if ( c.options.timezone == 'Europe/London')
+			{
+				$('.lo').html(moment().tz(c.options.timezone).format('HH:mm:ss'));
+				$('.lod').html(moment().tz(c.options.timezone).format('ddd MMM DD YYYY'));
+			} else
+			{
+				$('.ba').html(moment().tz(c.options.timezone).format('HH:mm:ss'));
+				$('.bad').html(moment().tz(c.options.timezone).format('ddd MMM DD YYYY'));
+			}
+		
+	}
+
+	setInterval(update, 1000);
+
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.clock-container {
+  width: 250px;
+  height: 180px;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-top: 100px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.clock-title #clock, #date {
+  width: 100%;
+  
+}
+
+.time-icon {
+  width: 32px;
+  height: 32px;
+}
+.clock-title {
+  font-size: 18px;
+  margin: 10px 0;
+  color: rgb(100, 116, 139);
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: rgb(51, 65, 85 );
+}
+
+.date {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 10px 0;
+  color: rgb(71, 85, 105 );
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>hs_clock</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>HS Clock</name>
+        <option_schema>[{"name":"timezone","section":"other","label":"Timezone","type":"choice","choices":[{"label":"Asia/Bangkok","value":"Asia/Bangkok"},{"label":"Europe/London","value":"Europe/London"},{"label":"America/Los_Angeles","value":"America/Los_Angeles"}]},{"name":"name","section":"other","label":"Name","type":"choice","choices":[{"label":"Asia /Bangkok","value":"Asia /Bangkok"},{"label":"Europe/London","value":"Europe/London"},{"label":"America/Los Angeles","value":"America/Los Angeles"}]}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-04-03 02:50:36</sys_created_on>
+        <sys_id>92998a5097c6a19051637d271153af30</sys_id>
+        <sys_mod_count>36</sys_mod_count>
+        <sys_name>HS Clock</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
+        <sys_update_name>sp_widget_92998a5097c6a19051637d271153af30</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-04-03 09:10:19</sys_updated_on>
+        <template><![CDATA[<div class="clock-container text-center">
+  <div class="clock-title">
+    <img src=time_clock.png class="time-icon">
+    
+    <span> {{::c.options.name}}</span>
+  </div>
+  <div class="clock" ng-class="{'la': c.options.timezone == 'America/Los_Angeles',
+                             'lo': c.options.timezone == 'Europe/London',
+                             'ba': c.options.timezone == 'Asia/Bangkok'}">
+    Loading...
+  </div>
+  
+  <div class="date" ng-class="{'lad': c.options.timezone == 'America/Los_Angeles',
+                             'lod': c.options.timezone == 'Europe/London',
+                             'bad': c.options.timezone == 'Asia/Bangkok'}">
+    
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope>
+        <claim_timestamp>1874661af1a0000001</claim_timestamp>
+        <metadata_update_name>sp_widget_92998a5097c6a19051637d271153af30</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>Healthcare</previous_claim_name>
+        <previous_claim_scope>8b74bac997f5655051637d271153afe9</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-04-03 09:10:19</sys_created_on>
+        <sys_id>e080a7d8970ea19051637d271153af4f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-04-03 09:10:19</sys_updated_on>
+    </sys_claim>
+</record_update>

@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, $window, $timeout) {
+    var c = this;
+    $scope.isLoading = false;
+
+    c.checkForData = function() {
+        if (!(c.primaryActivity) && !(c.secondaryActivity && c.secondaryActivity.length))
+            return true;
+        return false;
+    };
+
+    var changeCSS = function(element, css) {
+        Array.prototype.slice.call(document.querySelectorAll(element)).map(function(x) {
+            x.setAttribute("style", css);
+        });
+    };
+
+    var isSingleElement = function(selector) {
+        var elmnts = document.querySelectorAll(selector);
+        if(elmnts && elmnts.length === 1){
+            return true;
+        }
+        return false;
+    };
+    
+    //The purpose of this method is to ensure proper responsive behaviour of summary view on different scenarios.
+    var flexSummaryView = function() {
+        var summaryView = document.querySelector('.summary-view');
+        var listView = document.querySelector('.list-view');
+        var isSingleSecActivity = isSingleElement('.secondary-activity');
+        //There should not be a scenario where list view exists and summary view does not.
+        if(listView){
+            if(isSingleSecActivity){
+                changeCSS('.secondary','grid-template-columns: none');
+                changeCSS('.secondary-activity','justify-content:center');
+            }   
+            if(listView.offsetLeft === summaryView.offsetLeft){
+                changeCSS('.summary-view','flex: 1 0 242px');
+            }
+            else{
+                changeCSS('.summary-view','flex: 0 0 242px');
+            }
+        }
+        else if(summaryView){
+            var myitems = document.querySelector('.my-items-container');
+            if(myitems.clientWidth > 460){
+                changeCSS('.summary-view','flex: 1 0 242px; flex-flow: row wrap;');
+                changeCSS('.primary','width: 218px; margin-right: 16px');
+                if(!isSingleSecActivity){
+                    changeCSS('.secondary',
+                          'padding-top:0; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); flex: 1 0 104px;');
+                }
+                else{
+                    changeCSS('.secondary','padding-top:0; grid-template-columns: none; flex: 1 0 104px;');
+                    changeCSS('.secondary-activity','justify-content:center; max-width:218px;');
+                }
+            }
+            else{
+                changeCSS('.summary-view','flex: 1 0 242px');
+                $('.primary').removeAttr('style');
+                if(!isSingleSecActivity){
+                    $('.secondary').removeAttr('style');
+                    $('.secondary-activity').removeAttr('style');
+                }
+                else{
+                    changeCSS('.secondary','grid-template-columns: none;');
+                    changeCSS('.secondary-activity','justify-content:center; min-width:218px;');
+                }
+            }
+        }
+
+        //Following lines of code is only meant for IE11 to fix responsiveness.
+        var secondaryDisplay = $('.secondary').css('display');
+        //Detect IE11 
+        if(secondaryDisplay && secondaryDisplay !== 'grid'){
+            var secondaryActivity = document.querySelectorAll('.activity-container');
+            if(secondaryActivity && secondaryActivity.length > 0){
+                changeCSS('.activity-container','');
+                var commonWidth = secondaryActivity[0].clientWidth;
+                var property = 'max-width: ' + commonWidth + 'px !important';
+                changeCSS('.activity-container', property);
+            }
+        }
+    };
+
+
+    c.asyncGet = function() {
+        c.data.action = "loadData";
+        c.server.update().then(function(response) {
+            if (!c.data.hideWidget) {
+                $scope.isLoading = true;
+                c.primaryActivity = c.data.activityDetails.primaryCountData.length ? c.data.activityDetails.primaryCountData[0] : null;
+                c.secondaryActivity = c.data.activityDetails.summaryCountData;
+                c.listViewData = c.data.activityDetails.listViewData;
+                c.showViewAll = c.data.activityDetails.showViewAll;
+                var debouncedSummaryView = _.debounce(flexSummaryView, 100);
+                window.addEventListener('resize', debouncedSummaryView);
+                
+                //unregister the event when directive is destroyed
+                $scope.$on("$destroy", function() {
+                   window.removeEventListener('resize', debouncedSummaryView);
+                });
+                $timeout(flexSummaryView);
+            }
+        });
+    };
+    $timeout(c.asyncGet);
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>$font-size-large : 20px !default;
+$font-size-small : 12px !default;
+$font-size-h3 : 20px !default;
+$font-size-h2 : 24px !default;
+$font-size-base : 16px !default;
+$font-size-xs : 12px !default;
+$headings-font-weight : 600 !default;
+
+$sp-space--xxs: 2px !default;
+$sp-space--sm : 8px !default;
+$sp-space--xs : 4px !default;
+$sp-space--xl : 24px !default;
+
+$padding-small-horizontal : 12px !default;
+$padding-base-vertical : 6px !default;
+$padding-large-vertical : 8px !default;
+$padding-xs-horizontal : 8px !default;
+$padding-base-horizontal : 16px !default;
+$padding-small-vertical : 4px !default;
+
+$link-color : #3c59e7 !default;
+$link-hover-color : #263994 !default;
+
+$border-radius-base : 4px !default;
+$border-radius-small: 2px !default;
+
+$label-margin-bottom : 4px !default;
+
+$text-primary : #181A1F !default;
+$text-secondary : #474D5A !default;
+$text-tertiary : #656E81 !default;
+
+$background-primary : #ffffff !default;
+$background-secondary : #f6f6f8 !default; 
+$background-tertiary : #F0F1F5 !default;
+
+$border-secondary : #ACB2BE !default;
+$border-tertiary : #DADDE2 !default;
+$color-sp-separator: #EAEAEA;
+
+$sp-panel-box-shadow : 0 4px 8px 0 rgba(23,40,52,0.08) !default;
+
+
+.my-items-container {
+
+  box-shadow: $shadow-primary;
+  height: 300px;
+  background-color:  #fff;
+
+  margin-bottom: 1rem;
+  border-radius: $border-radius-base;
+  .widget-header {
+
+    height: 50px;
+    padding: 12px 24px;
+    .title {
+      font-size: $font-size-large;
+      color: #6667ab;   
+      width: 100%; 
+      border-bottom: 1px solid #e5e4f1; 
+      line-height: 0.1em;
+      margin: 20px 0 20px; 
+      span {
+        padding:0 20px 0 0;
+        background-color: #fff;
+      }
+    }
+  }
+  .no-primary-activity {
+    margin-top: $padding-small-horizontal !important;
+  }
+  .my-items-body {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: $sp-space--xl;
+    padding-right: $sp-space--xl;
+    padding-top: 0px;
+    .text-grey {
+      * {
+        color: $text-tertiary !important;
+      }
+    }
+    .activity-check {
+      text-align: center;
+      width: 100%;
+      margin-right: $sp-space--xl;
+    }
+    .no-items {
+      font-size: $font-size-small;
+      color: $text-primary;
+    }
+    .summary-view {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.8rem;
+      padding-left: $sp-space--xl;
+      .primary:hover {
+        box-shadow: $sp-panel-box-shadow;
+      }
+      .primary {
+        padding: $padding-base-vertical;
+        background: #fff;
+        border: 1px solid #b3b0d5;
+        border-radius: $border-radius-base;
+        height: 7.6rem;
+        min-width: 218px;
+        align-items: center;
+        
+        justify-content: center;
+        &amp;:hover {
+          background: #6667ab;
+          color: #fff;
+          font-size: 20px;
+        }
+        &amp;:focus {
+          border-color: #6667ab;
+          box-shadow: none;
+        }
+      }
+      .primary-activity {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      .primary-item-count {
+        margin: 0rem;
+        font-weight: bold;
+
+      }
+      .primary-item-name {
+
+        overflow: hidden;
+        line-height: 1.68rem;
+        margin: 0rem;
+        white-space: nowrap;
+        max-width:240px;
+        text-overflow:ellipsis
+      }
+      .secondary-width {
+        width: none;
+      }
+    }
+    .secondary {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(104px,1fr));
+      grid-gap: 10px;
+      padding-top: 10px;
+      .activity-container {	
+        .secondary-activity:hover {
+          box-shadow: $sp-panel-box-shadow;
+        }
+        .secondary-activity {
+          background: $background-primary;
+          border: 1px solid #b3b0d5;
+          border-radius: $border-radius-base;
+          height: 100px;
+          padding-left: $padding-small-horizontal;
+          padding-right: $padding-small-vertical;
+          display: flex;
+          align-items: center;
+          min-width: 104px;
+          &amp;:hover {
+            background: #6667ab;
+            color: #fff;
+            font-weight: bold;
+          }
+          &amp;:focus {
+            border-color: #6667ab;
+            box-shadow: none;
+          }
+          &gt; div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+           	 
+          }
+        }
+        .secondary-item-count {
+          font-size: 24px;
+          font-weight: bold;
+        }
+        .secondary-item-name {
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          height: 2rem;
+          line-height: 2rem;
+          margin: 0rem;
+          white-space: nowrap;
+          
+        
+        }
+      }
+    }
+    .divider {
+      height: 0;
+      border: $border-radius-small solid #F6F6F6;
+      margin-right: $sp-space--xl;
+      margin-bottom: 1.8rem;
+      width: 100%;
+    }
+    .list-view {
+      flex: 1 0 242px;
+      padding-left: $sp-space--xl;
+      .view-all {
+        color: $link-color;
+        justify-items: flex-end;
+        font-size: $font-size-small;
+        height: fit-content;
+        height: -moz-fit-content;
+        padding: $sp-space--xxs;
+        min-width: 63px;
+      }
+      .view-all:hover {
+        color: $link-hover-color;
+      }
+      .header {
+        display: flex;
+        .list-header {
+          font-size: $font-size-large;
+          margin-top: 0rem;
+          color: $text-primary;
+          flex-grow: 1;
+          margin-bottom: 1.8rem;
+        }
+      }
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(218px,1fr));
+        grid-column-gap: 1.8rem;
+        .flex-item-card:hover {
+          box-shadow: $sp-panel-box-shadow;
+        }
+        .flex-item-card {
+          border: 1px solid $border-tertiary;
+          background: $background-primary;
+          border-radius: $border-radius-base;
+          min-height: 136px;
+          padding: $padding-base-horizontal;
+          margin-bottom: 1.8rem;
+          p {
+            margin-bottom: 0px;
+          }
+          .item-badge {
+            padding: $sp-space--xxs $sp-space--xs;
+            border-radius: $border-radius-small;
+            height: $font-size-large;
+            min-height: $font-size-large;
+            font-size: $font-size-xs;
+            font-weight: normal;
+          }
+          .item-title {
+            min-height: 2rem;
+            color: $text-primary;
+            font-size: $font-size-base;
+            font-weight: $headings-font-weight;
+            margin-bottom: $padding-base-vertical;
+            margin-top: -3px;
+          }
+          .item-description {
+            min-height: $font-size-large;
+            color: $text-secondary;
+            font-size: $font-size-xs;
+            font-weight: normal;
+          }
+          .item-field {
+            font-size: $font-size-xs;
+            color: $text-tertiary;
+          }
+          .item-value {
+            font-size: $font-size-xs;
+            color: $text-primary;
+          }
+          .text-ellipsis {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            word-break: break-word;
+          }
+          .text-ellipsis-two-line {
+            -webkit-line-clamp: 2;
+          }
+          .card-image {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: $padding-base-horizontal;
+            .card-text-container {
+              padding-left: $padding-base-horizontal;
+            }
+            .image-item {
+              height: 70px;
+              width: 70px;
+              min-width: 70px;
+            }
+          }
+          .field-name {
+            display: flex;
+            margin-top: $padding-small-horizontal;
+          }
+          .field-value {
+            display: flex;
+            margin-top: $sp-space--xxs;
+          }
+        }
+      }
+    }
+  }
+}
+
+.fix-width {
+  width: 50%;	
+}	
+.full-fix-width {	
+  width: 100%;	
+}
+
+.field-container {
+  padding-right: 1.0rem;
+  word-break: break-word;
+  -webkit-line-clamp: 1;
+}
+
+/* IE specific Class to override */
+@media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) and (min-width: 992px, (max-width: 380px)){
+    .my-items-container{
+      min-width: auto !important;
+      .summary-view{
+        flex: 1 1 288px !important;
+        .primary{
+          min-width: 220px !important;
+        }
+        .secondary{
+          .activity-container{
+            flex: 1 1 110px !important;
+            .secondary-activity{
+              min-width: 110px !important;
+            }
+          }
+        }
+      }
+      .list-view{
+        flex: 1 1 278px !important;
+        .card-container{
+          justify-content: flex-start !important;
+          .flex-item-card{
+            flex: 1 1 242px !important;
+            .card-image &gt; div{
+              width: 100% !important;
+            }
+            .text-ellipsis{
+              width: auto !important;
+            }
+          }
+        }
+      }
+    }
+}
+@media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+    .my-items-container{
+      min-width: 362px;
+      .summary-view{
+        .secondary{
+          display: inline-flex;
+          flex-flow: row wrap;
+          padding-top: 10px;
+          margin: -10px 0 0 -10px;
+          .activity-container{
+            margin: 10px 0 0 10px;
+            flex: 1 0 139px;
+          }
+        }
+      }
+      .list-view{
+        .view-all{
+          height: 22px;
+        }
+      }
+      .card-container{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        .flex-item-card{
+          p {
+            display: inline;
+          }
+          width: 312px;
+          .card-text-container{
+            .text-ellipsis{
+              width: 203px;
+            }
+          }
+          .text-ellipsis{
+            white-space: nowrap;
+            width: 278px;
+          }
+        }
+      }
+    }
+
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>hs_my_items</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>HS My items</name>
+        <option_schema>[{"name":"list_view_count","section":"other","default_value":"3","label":"List View Count","type":"choice","choices":[{"label":"3","value":"3"},{"label":"5","value":"5"}]}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    if (!input)
+        return;
+
+    try {
+        data.recordLimit = options.list_view_count;
+        var activityConfigUtil = new sn_ex_sp.ActivityConfigurationUtil();
+        data.activityDetails = activityConfigUtil.getActivityData(data.recordLimit);
+        data.title = gs.getMessage("My active items");
+        if (data.activityDetails.primaryCountData && data.activityDetails.primaryCountData.length > 0)
+            data.list_title = gs.getMessage('Quick {0}', data.activityDetails.primaryCountData[0].itemName.toLowerCase());
+        data.hideWidget = false;
+        return data;
+    } catch (e) {
+        data.hideWidget = true;
+        gs.addErrorMessage(gs.getMessage("Error in loading the My Items widget"));
+        return data;
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-28 03:44:09</sys_created_on>
+        <sys_id>805c53529735a95051637d271153af6b</sys_id>
+        <sys_mod_count>62</sys_mod_count>
+        <sys_name>HS My items</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
+        <sys_update_name>sp_widget_805c53529735a95051637d271153af6b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-04-18 19:51:15</sys_updated_on>
+        <template><![CDATA[<div ng-if="isLoading" class="my-items-container">
+  <div class="widget-header">
+    <h3 class="title"><span>My Active Items </span></h3> </div>
+  <div class="my-items-body" ng-class="c.primaryActivity ? '' : 'no-primary-activity'">
+    <div class="activity-check" ng-if="c.checkForData()">
+      <p class="no-items"> There's nothing to check in on right now </p>
+    </div>
+    <div class="summary-view">
+      <a class="primary" ng-if="c.primaryActivity" ng-href="{{c.primaryActivity.itemUrl}}" target="{{c.primaryActivity.target}}" aria-label="{{c.primaryActivity.itemCount}} {{c.primaryActivity.itemName}} {{::data.title}}">
+        <div class="primary-activity" >
+          <h3 class="primary-item-count">{{c.primaryActivity.itemCount}}</h3>
+          <span class="primary-item-name" ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{c.primaryActivity.itemName}}">{{c.primaryActivity.itemName}}</span>
+        </div>
+      </a>
+      <div class="secondary" ng-class="(c.primaryActivity) ? 'primary-width' : 'secondary-width'">
+        <div class="activity-container" ng-repeat="item in c.secondaryActivity track by $index">
+          <a class="secondary-activity" ng-href="{{item.itemUrl}}" target="{{item.target}}" aria-label="{{item.itemCount}} {{item.itemName}} {{::data.title}}">
+            <div>
+              <div class="secondary-item-count">{{item.itemCount}}</div>
+              <div class="secondary-item-name" ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{item.itemName}}">{{item.itemName}}</div>
+
+            </div>
+
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="list-view" ng-if="c.listViewData.length > 0">
+      <div class="header">
+        <h3 class="list-header">{{::data.list_title}}</h3> 
+        <a class="view-all" ng-if="c.showViewAll" ng-href="{{c.primaryActivity.itemUrl}}" target="{{c.primaryActivity.target}}">${View all}
+          <i aria-hidden="true" class="right-arrow fa fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="card-container">
+        <a class="flex-item-card" ng-repeat="item in c.listViewData track by $index | limitTo:data.recordLimit" ng-href="{{item.itemUrl}}" target="{{item.target}}">
+          <div class="item-description"><span ng-if="item.badge" class="item-badge" ng-attr-style="background-color:{{item.badgeColor || ''}};color:{{item.badgeTextColor || ''}}">{{::item.badge}}</span></div>
+          <div class="card-image"> <img ng-if="item.image" class="image-item" aria-hidden="true" ng-src="{{item.image}}" />
+            <div ng-class="item.image ? 'card-text-container' : ''">
+              <div ng-if="item.title" class="item-title text-ellipsis-two-line text-ellipsis"><p ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{::item.title}}">{{::item.title}}</p> </div>
+              <div ng-if="item.description" class="item-description text-ellipsis-two-line text-ellipsis"><p ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{::item.description}}">{{::item.description}}</p> </div>
+            </div>
+          </div>
+          <div class="field-name">
+            <div ng-if="item.field1Value" class="item-field text-ellipsis-two-line text-ellipsis flex-grow" ng-class="item.field2Value ? 'fix-width' : 'full-fix-width'"> <p ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{::item.field1Label}}">{{::item.field1Label}}</p> </div>
+            <div ng-if="item.field2Value" class="item-field text-ellipsis-two-line text-ellipsis flex-grow" ng-class="item.field1Value ? 'fix-width' : 'full-fix-width'"> <p ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{::item.field2Label}}">{{::item.field2Label}}</p> </div>
+          </div>
+          <div class="field-value">
+            <div ng-if="item.field1Value" class="item-value field-container text-ellipsis" ng-class="item.field2Value ? 'fix-width' : 'full-fix-width'"> <p ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{::item.field1Value}}">{{::item.field1Value}}</p> </div>
+            <div ng-if="item.field2Value" class="item-value field-container text-ellipsis" ng-class="item.field1Value ? 'fix-width' : 'full-fix-width'"> <p ec-multiline-ellipsis-tooltip ec-ellipsis-tooltip-title="{{::item.field2Value}}">{{::item.field2Value}}</p> </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div> -->]]></template>
+    </sp_widget>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope>
+        <claim_timestamp>1872c04870e0000001</claim_timestamp>
+        <metadata_update_name>sp_widget_805c53529735a95051637d271153af6b</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>Healthcare</previous_claim_name>
+        <previous_claim_scope>8b74bac997f5655051637d271153afe9</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-29 06:18:26</sys_created_on>
+        <sys_id>4639c97697b52d5051637d271153af11</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-29 06:18:26</sys_updated_on>
+    </sys_claim>
+</record_update>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_header_footer">
+    <sp_header_footer action="INSERT_OR_UPDATE">
+        <category>sample</category>
+        <client_script><![CDATA[function() {
+  // widget controller
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.hs-footer {
+
+  height: 300px;
+
+  color: white; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    margin: 10px 0;
+  }
+}
+
+.copyright {
+  color: #898989;
+  font-weight: bold;
+}
+
+a:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.social {
+
+  a {
+    width: 46px;
+    height: 46px;
+    border-radius: 100%;
+    background-color: #fff;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0 10px;
+    cursor: pointer;
+
+    img {
+      height: 30px;
+
+      margin-top: 8px;
+
+    }
+  }
+}
+
+.useful-link, .contact {
+  font-weight: bold;
+  span {
+    margin: 0 10px;
+    display: inline-block;
+  }
+  a {
+    color: #fff;
+    
+  }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>HS footer</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+ data.time = new GlideDateTime().getDisplayValue();
+})();]]></script>
+        <servicenow>false</servicenow>
+        <static>false</static>
+        <sys_class_name>sp_header_footer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-27 08:43:44</sys_created_on>
+        <sys_id>fa479b469735695051637d271153af73</sys_id>
+        <sys_mod_count>49</sys_mod_count>
+        <sys_name>HS footer</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
+        <sys_update_name>sp_header_footer_fa479b469735695051637d271153af73</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-31 03:35:52</sys_updated_on>
+        <template><![CDATA[<div class="hs-footer text-center" role="contentinfo">	
+  <div class="social">
+    <a href="https://www.facebook.com/" target="_blank"> 
+      <img src="facebook-social-logo.png">
+    </a>
+
+    <a href="https://www.linkedin.com/" target="_blank" >
+      <img src="linkedin-social-logo.png">
+    </a>
+
+    <a href="https://www.scc.com/" target="_blank" >
+      <img src="website-social-logo.png">
+    </a>
+
+  </div>
+  <div class="useful-link">
+    <span>
+      <a href="?id=kb_home" >
+        Knowledge Base
+      </a>
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      <a href="?id=sc_home" >
+        Service Catalog
+      </a>
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      <a href="?id=requests" >
+        Request
+      </a>
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      <a href="?id=sw_today" >
+        Safe Workplace
+      </a>
+    </span>
+  </div>
+
+  <div class="contact">
+    
+    <span>
+      0901234567
+    </span>
+     <span>
+      •
+    </span>
+    <span>
+      contact@medicalcompany.com
+    </span>
+    <span>
+      •
+    </span>
+    <span>
+      Maple Tree Building, District 7, Ho Chi Minh City
+    </span>
+  </div>
+
+  <div class="copyright">
+    &#169; 2023 Medical Company  
+  </div>
+</div>]]></template>
+    </sp_header_footer>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</claim_owner_scope>
+        <claim_timestamp>1872269fb200000001</claim_timestamp>
+        <metadata_update_name>sp_header_footer_fa479b469735695051637d271153af73</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>Healthcare</previous_claim_name>
+        <previous_claim_scope>8b74bac997f5655051637d271153afe9</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-27 09:33:03</sys_created_on>
+        <sys_id>5992a3429775695051637d271153afd8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-27 09:33:03</sys_updated_on>
+    </sys_claim>
+</record_update>
