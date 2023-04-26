@@ -4,6 +4,11 @@
         <css>body {
   background-color: #e5e4f1;
   font-family: 'Montserrat', sans-serif !important;
+}
+
+.select2-container-active, .select2-input:focus {
+  border: 1px solid #6667ab;
+  box-shadow: $shadow-primary;
 }</css>
         <draft>false</draft>
         <dynamic_title_structure/>
@@ -18,14 +23,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-04-03 06:36:26</sys_created_on>
         <sys_id>d24d3a14978aa19051637d271153af2f</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>hs_safe_workplace</sys_name>
         <sys_package display_value="Healthcare" source="8b74bac997f5655051637d271153afe9">8b74bac997f5655051637d271153afe9</sys_package>
         <sys_policy/>
         <sys_scope display_value="Healthcare">8b74bac997f5655051637d271153afe9</sys_scope>
         <sys_update_name>sp_page_d24d3a14978aa19051637d271153af2f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-04-03 06:38:02</sys_updated_on>
+        <sys_updated_on>2023-04-20 09:06:00</sys_updated_on>
         <title>My Safe Workplace</title>
         <use_seo_script>false</use_seo_script>
     </sp_page>
